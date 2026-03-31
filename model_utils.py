@@ -3,10 +3,10 @@ import numpy as np
 import cv2
 import os
 import gdown
-import streamlit as st
 
-# ---------- MODEL DOWNLOAD ----------
 MODEL_PATH = "saved_models/model.h5"
+
+# 🔥 Google Drive direct download link
 MODEL_URL = "https://drive.google.com/uc?id=1qvMMTzsQsfHJucBAIKgDP3KAwQKBx1du"
 
 def download_model():
@@ -16,15 +16,13 @@ def download_model():
     if not os.path.exists(MODEL_PATH):
         gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
 
-# ---------- LOAD MODEL ----------
-@st.cache_resource
+# LOAD MODEL
 def load_model():
     download_model()
     return tf.keras.models.load_model(MODEL_PATH, compile=False)
 
 model = load_model()
 
-# ---------- PREDICTION ----------
 IMG_SIZE = (299, 299)
 FRAMES = 10
 

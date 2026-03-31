@@ -1,19 +1,32 @@
 import tensorflow as tf
 import numpy as np
 import cv2
+import os
+import gdown
 import streamlit as st
 
-IMG_SIZE = (299, 299)
-FRAMES = 10
+# ---------- MODEL DOWNLOAD ----------
+MODEL_PATH = "saved_models/model.h5"
+MODEL_URL = "https://drive.google.com/uc?id=1qvMMTzsQsfHJucBAIKgDP3KAwQKBx1du"
 
+def download_model():
+    if not os.path.exists("saved_models"):
+        os.makedirs("saved_models")
+
+    if not os.path.exists(MODEL_PATH):
+        gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
+
+# ---------- LOAD MODEL ----------
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model(
-        "saved_models/final_video_deepfake_model_xception.h5",
-        compile=False
-    )
+    download_model()
+    return tf.keras.models.load_model(MODEL_PATH, compile=False)
 
 model = load_model()
+
+# ---------- PREDICTION ----------
+IMG_SIZE = (299, 299)
+FRAMES = 10
 
 def preprocess_frame(frame):
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)

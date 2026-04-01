@@ -1,6 +1,9 @@
 import tensorflow as tf
 import numpy as np
-import cv2
+try:
+   import cv2
+except:
+    cv2 = None
 import os
 import gdown
 

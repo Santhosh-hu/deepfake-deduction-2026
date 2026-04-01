@@ -29,7 +29,11 @@ def download_model():
 # LOAD MODEL
 def load_model():
     download_model()
-    return tf.keras.models.load_model(MODEL_PATH, compile=False)
+    return tf.keras.models.load_model(
+    MODEL_PATH,
+    compile=False,
+    safe_mode=False
+)
 
 model = load_model()
 

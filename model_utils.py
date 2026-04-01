@@ -9,8 +9,8 @@ import gdown
 
 MODEL_PATH = "saved_models/model.h5"
 
-#  Google Drive direct download link
-MODEL_URL = "https://drive.google.com/uc?id=1qvMMTzsQsfHJucBAIKgDP3KAwQKBx1du"
+#  Google Drive 
+MODEL_URL = "https://drive.google.com/uc?id=1qvMMTzsQsfHJucBAlKgDP3KAwQKBx1du"
 
 def download_model():
     if not os.path.exists("saved_models"):

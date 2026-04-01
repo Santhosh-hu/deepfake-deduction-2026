@@ -7,6 +7,7 @@ except:
 import os
 import gdown
 import requests
+
 MODEL_PATH = "saved_models/model.h5"
 
 #  Google Drive 
@@ -15,9 +16,16 @@ MODEL_URL = "https://drive.google.com/uc?id=1qvMMTzsQsfHJucBAlKgDP3KAwQKBx1du"
 def download_model():
     if not os.path.exists("saved_models"):
         os.makedirs("saved_models")
+       
+if not os.path.exists(MODEL_PATH):
+    import requests
 
-    if not os.path.exists(MODEL_PATH):
-      gdown.download(id="1qvMMTzsQsfHJucBAlKgDP3KAwQKBx1du", output=MODEL_PATH, quiet=False)
+    url = "https://drive.google.com/uc?export=download&id=1qvMMTzsQsfHJucBAlKgDP3KAwQKBx1du"
+    
+    response = requests.get(url)
+    
+    with open(MODEL_PATH, "wb") as f:
+        f.write(response.content)
 # LOAD MODEL
 def load_model():
     download_model()

@@ -4,6 +4,6 @@ opencv-python==4.7.0.72
 mtcnn==0.1.1
 pandas==2.2.1
 gdown==4.7.1
-tensorflow==2.12.0
+tensorflow==2.15.0
 requests
 keras==2.12.0

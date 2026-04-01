@@ -8,7 +8,7 @@ import os
 import gdown
 import requests
 
-MODEL_PATH = "saved_models/model.h5"
+MODEL_PATH = "saved_models/model.keras"
 
 #  Google Drive 
 MODEL_URL = "https://drive.google.com/uc?id=1qvMMTzsQsfHJucBAlKgDP3KAwQKBx1du"
@@ -31,8 +31,7 @@ def load_model():
     download_model()
     return tf.keras.models.load_model(
     MODEL_PATH,
-    compile=False,
-    safe_mode=False
+    compile=False
 )
 
 model = load_model()

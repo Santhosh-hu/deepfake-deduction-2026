@@ -17,7 +17,7 @@ def download_model():
         os.makedirs("saved_models")
 
     if not os.path.exists(MODEL_PATH):
-        gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
+      gdown.download(MODEL_URL, MODEL_PATH, quiet=False, fuzzy=True)
 
 # LOAD MODEL
 def load_model():

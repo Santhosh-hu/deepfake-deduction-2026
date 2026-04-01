@@ -8,7 +8,7 @@ import os
 import gdown
 import requests
 
-MODEL_PATH = "saved_models/model.keras"
+MODEL_PATH = "saved_models/model.h5"
 
 #  Google Drive 
 MODEL_URL = "https://drive.google.com/uc?id=1qvMMTzsQsfHJucBAlKgDP3KAwQKBx1du"

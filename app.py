@@ -142,11 +142,13 @@ if uploaded_video:
         st.subheader("Video Frames")
 
         # FACE FRAMES
-        frames = extract_face_frames(video_path)
+       frames = extract_face_frames(video_path)
 
-        cols = st.columns(4)
-        for i, frame in enumerate(frames):
-            cols[i % 4].image(frame, use_container_width=True)
+       frames = frames[:8]
+
+       cols = st.columns(4)
+       for i, frame in enumerate(frames):
+           cols[i % 4].image(frame, use_container_width=True)
 
         st.info("Analyzing...")
 

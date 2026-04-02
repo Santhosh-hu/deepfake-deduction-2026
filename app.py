@@ -4,7 +4,7 @@ import tempfile
 import re
 import os
 
-# 🔥 IMPORT FROM MODULES
+
 from db import *
 from email_utils import send_email_alert
 from model_utils import predict_video
@@ -142,13 +142,16 @@ if uploaded_video:
         st.subheader("Video Frames")
 
         # FACE FRAMES
-       frames = extract_face_frames(video_path)
+      frames = extract_face_frames(video_path)
 
-       frames = frames[:8]
+      if len(frames) == 0:
+          st.warning(" No frames detected")
+      else:
+          frames = frames[:8]
 
-       cols = st.columns(4)
-       for i, frame in enumerate(frames):
-           cols[i % 4].image(frame, use_container_width=True)
+          cols = st.columns(4)
+          for i, frame in enumerate(frames):
+              cols[i % 4].image(frame, use_container_width=True)
 
         st.info("Analyzing...")
 
